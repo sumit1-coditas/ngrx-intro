@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from '@ngrx/effects';
+import { FormsModule } from '@angular/forms';
 
 import { countryReducer } from "./store/reducers/country.reducers";
 import { selectCountryReducer } from "./store/reducers/country.reducers";
@@ -32,7 +33,8 @@ import { HomeComponent } from './components/home/home.component';
     }),
     EffectsModule.forRoot([SongEffects]),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

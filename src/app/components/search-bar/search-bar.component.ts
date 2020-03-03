@@ -1,18 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchCountry, ClearSearchedList, ClearSelectedCountry } from 'src/app/store/actions/country.actions';
 import { CountryState } from './../../store/state/country.state';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent implements OnInit, OnDestroy {
+
+  private storeSubscription: Subscription;
+
+  searchKey: string;
 
   constructor(private store: Store<CountryState>) { }
 
   ngOnInit(): void {
+    this.storeSubscription = this.store.select('countryList').subscribe(
+      (data: any) => {
+        if (!(data.searchTerm === undefined)) {
+          this.searchKey = data.searchTerm;
+        }
+      }
+    );
   }
 
   onKeyupSearch(e: any) {
@@ -22,6 +34,10 @@ export class SearchBarComponent implements OnInit {
       this.store.dispatch(new ClearSearchedList());
       this.store.dispatch(new ClearSelectedCountry());
     }
+  }
+
+  ngOnDestroy() {
+    this.storeSubscription.unsubscribe();
   }
 
 }

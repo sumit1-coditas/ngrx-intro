@@ -2,7 +2,7 @@ import { ECountryActions } from "../actions/country.actions";
 import { CountryActions } from "../actions/country.actions";
 
 export function countryReducer(state = {}, action: CountryActions) {
-
+    
     switch (action.type) {
         case ECountryActions.SearchCountry: {
             return { ...state, searchTerm: action.payload };
