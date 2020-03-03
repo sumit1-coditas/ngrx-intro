@@ -1,1 +1,21 @@
-<p>{{selectedCountry.name}}</p>
+
+<div class="row">
+    <div class="col-10 mx-auto">
+        <div class="text-center">
+            <h3>{{selectedCountry.name}}</h3>
+        </div>        
+    </div>
+    <div class="col-2 mx-auto">
+        <div class="text-center">
+            <img class="img-fluid" src='{{selectedCountry.flag}}' alt="">
+        </div>        
+    </div>
+</div>
+<ul>
+    <li>Name: {{selectedCountry.name}}</li>
+    <li>Capital: {{selectedCountry.capital}}</li>
+    <li>Region: {{selectedCountry.region}}</li>
+    <li>Population: {{selectedCountry.population}}</li>
+    <li>Area: {{selectedCountry.area}}</li>
+    <li>Demonym: {{selectedCountry.demonym}}</li>
+</ul>

@@ -23,6 +23,8 @@ export class CountryDetailComponent implements OnInit,OnDestroy {
 
     this.storeSubscription = this.store.select('selectedCountry').subscribe(data => {
       this.selectedCountry = data;
+      console.log(data);
+      
     });
   }
 
